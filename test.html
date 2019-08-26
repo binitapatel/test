@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        function isNumber(ev) {
+            if (ev.type === "paste") {
+                var textContent;
+                if (ev.clipboardData) {
+                    textContent = ev.clipboardData.getData('text');
+                } else if (window.clipboardData) {
+                    textContent = window.clipboardData.getData('text');
+                }
+                return !isNaN(textContent) && textContent.indexOf(".") === -1;
+            }
+
+            return true;
+        }
+    </script>
+</head>
+<body>
+Zipcode : <input type="tel" class="col-6-sm form-control zipcode" maxlength="5"
+       name= "zip" id="zip" placeholder="zipcode" onpaste="return isNumber(event)">
+</body>
+
+</html>
